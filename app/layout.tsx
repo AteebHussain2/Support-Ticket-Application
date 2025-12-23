@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Geist, Geist_Mono, Poppins, Inter } from "next/font/google";
 import type { Metadata } from "next";
+import { shadcn } from "@clerk/themes";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -37,19 +38,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased`}>
+    <ClerkProvider
+      appearance={{
+        theme: shadcn,
+      }}
+    >
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
             {children}
-          </body>
-        </ThemeProvider>
-      </html>
-    </ClerkProvider>
+          </ThemeProvider>
+        </body>
+      </html >
+    </ClerkProvider >
   );
 }
