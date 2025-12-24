@@ -1,7 +1,10 @@
+"use client";
+
+import { SignedIn, UserButton, SignedOut } from "@clerk/clerk-react";
+import { ThemeToggle } from "../ThemeToggle";
 import { ShieldCheck } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { ThemeToggle } from "../ThemeToggle";
 
 const HomeHeader = () => {
     return (
@@ -26,14 +29,19 @@ const HomeHeader = () => {
                 </nav>
                 <div className="flex items-center gap-2">
                     <ThemeToggle />
-                    <Link href="/login">
-                        <Button variant="ghost" size="sm">
-                            Log in
-                        </Button>
-                    </Link>
-                    <Link href="/signup">
-                        <Button size="sm">Get Started</Button>
-                    </Link>
+                    <SignedOut>
+                        <Link href="/login">
+                            <Button variant="ghost" size="sm">
+                                Log in
+                            </Button>
+                        </Link>
+                        <Link href="/signup">
+                            <Button size="sm">Get Started</Button>
+                        </Link>
+                    </SignedOut>
+                    <SignedIn>
+                        <UserButton />
+                    </SignedIn>
                 </div>
             </div>
         </header>

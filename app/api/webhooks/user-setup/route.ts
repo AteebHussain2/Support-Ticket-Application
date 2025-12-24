@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
     try {
         switch (body.type) {
             case "user.created":
-                await prisma.user.create({
+                const user = await prisma.user.create({
                     data: {
                         id: data.id,
                         username: data.username,
@@ -43,7 +43,8 @@ export async function POST(request: NextRequest) {
                 return NextResponse.json('User Successfully Deleted', { status: 200 });
         };
     } catch (error) {
-        return NextResponse.json('Failed to create user' + error, { status: 200 });
+        console.error(error);
+        return NextResponse.json('Failed to create user' + error, { status: 500 });
     };
 
     return NextResponse.json({ message: "Success", status: 200 });
