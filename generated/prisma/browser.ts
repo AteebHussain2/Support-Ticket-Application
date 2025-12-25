@@ -32,3 +32,8 @@ export type Department = Prisma.DepartmentModel
  * 
  */
 export type Ticket = Prisma.TicketModel
+/**
+ * Model Comment
+ * 
+ */
+export type Comment = Prisma.CommentModel

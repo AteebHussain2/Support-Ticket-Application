@@ -40,11 +40,20 @@ const HomeHeader = () => {
                         </Link>
                     </SignedOut>
                     <SignedIn>
+                        <Link href="/tickets">
+                            <Button size="sm" variant="ghost" className=" rounded-[3px]!">Tickets</Button>
+                        </Link>
+                        <Link href="/support">
+                            <Button size="sm" variant="secondary" className="rounded-[3px]!">Support</Button>
+                        </Link>
+                        <Link href="/dashboard">
+                            <Button size="sm" className="rounded-[3px]!">Dashboard</Button>
+                        </Link>
                         <UserButton />
                     </SignedIn>
                 </div>
             </div>
-        </header>
+        </header >
     )
 }
 

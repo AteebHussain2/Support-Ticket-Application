@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { shadcn } from "@clerk/themes";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Providers from "./providers";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -45,14 +46,16 @@ export default function RootLayout({
     >
       <html lang="en" suppressHydrationWarning>
         <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased`}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+          <Providers>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+          </Providers>
         </body>
       </html >
     </ClerkProvider >
