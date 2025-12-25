@@ -1,21 +1,11 @@
 "use client";
 
-import {
-    Area,
-    AreaChart,
-    Bar,
-    BarChart,
-    CartesianGrid,
-    ResponsiveContainer,
-    Tooltip,
-    XAxis,
-    YAxis
-} from "recharts";
-import { ArrowDownRight, ArrowUpRight, Search, Bell, Menu } from "lucide-react";
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { dashboardMetrics, resolutionTrendsData, ticketVolumeData, recentTickets } from "./_components/data";
+import { ArrowDownRight, ArrowUpRight, Search, Bell, Menu } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function DashboardPage() {
     return (

@@ -24,6 +24,7 @@ model User {
 
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
+  tickets   Ticket[]
 
   @@index([email, username, firstName, lastName])
 }
@@ -42,6 +43,34 @@ model Department {
 
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
+  tickets   Ticket[]
 
   @@index([name])
+}
+
+model Ticket {
+  id      Int          @id @unique @default(autoincrement())
+  subject String
+  content String
+  status  TicketStatus @default(OPENED)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  claimedBy   String?
+  forwardedBy String?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+enum TicketStatus {
+  OPENED
+  CLAIMED
+  FORWARDED
+  CLOSED
+  RESOLVED
 }

@@ -16,3 +16,14 @@ export const UserRole = {
 } as const
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+
+export const TicketStatus = {
+  OPENED: 'OPENED',
+  CLAIMED: 'CLAIMED',
+  FORWARDED: 'FORWARDED',
+  CLOSED: 'CLOSED',
+  RESOLVED: 'RESOLVED'
+} as const
+
+export type TicketStatus = (typeof TicketStatus)[keyof typeof TicketStatus]
